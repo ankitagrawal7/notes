@@ -1,0 +1,11 @@
+<header class="navbar navbar-dark bg-dark" *ngIf="showHeader">
+  <button class="btn btn-link" (click)="goBack()">
+    <i class="fas fa-arrow-left"></i>
+  </button>
+</header>
+<span class="date">{{form.value.created_on | date: 'MMMM d, y h:mm a'}}</span>
+<form [formGroup]="form">
+  <input type="text" formControlName="title" name="title" class="form-control" placeholder="Title" (input)="addNote()">
+  <textarea formControlName="description" name="description" rows="10" class="form-control" placeholder="Description"
+    (input)="addNote()"></textarea>
+</form>

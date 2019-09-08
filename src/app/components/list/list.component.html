@@ -1,0 +1,16 @@
+<ul *ngIf="!(searchTerm | async)">
+  <li *ngFor="let item of notes | async; let i = index" [class.active]="(selected | async) === i"
+    (click)="selectListItem(i)">
+    <h3>{{item.title || "Title"}}</h3>
+    <div class="desc">{{item.created_on | datetime}} | {{item.description || "Description"}}</div>
+  </li>
+</ul>
+
+<ul *ngIf="searchTerm | async">
+  Search Results
+  <li *ngFor="let item of searchResults | async; let i = index" [class.active]="(selected | async) === i"
+    (click)="selectListItem(i)">
+    <h3>{{item.title || "Title"}}</h3>
+    <div class="desc">{{item.created_on | datetime}} | {{item.description || "Description"}}</div>
+  </li>
+</ul>
